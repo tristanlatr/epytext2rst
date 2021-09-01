@@ -8,5 +8,6 @@ setup(
     author='Stefan Lehmann',
     author_email='Stefan.St.Lehmann@gmail.com',
     description='Convert epytext markup language in RestructuredText',
-    scripts=['epytext2rst.py']
+    scripts=['epytext2rst.py'],
+    py_modules=['epytext2rst'],
 )
