@@ -22,6 +22,8 @@ re_field = re.compile('@(param|type|rtype|return|ivar)')
 re_italics = re.compile('I\{(.*?)\}')
 re_bold = re.compile('B\{(.*?)\}')
 re_code = re.compile('C\{(.*?)\}')
+re_codelink = re.compile('L\{(.*?)\}')
+re_link = re.compile('U\{(.*?)\}')
 
 
 def substitute(text):
@@ -30,7 +32,9 @@ def substitute(text):
         new = re_field.sub(r':\1', line)
         new = re_italics.sub(r'*\1*', new)
         new = re_bold.sub(r'**\1**', new)
-        new = re_code.sub(r'``\1``', new)        
+        new = re_code.sub(r'``\1``', new)
+        new = re_codelink.sub(r'`\1`', new)        
+        new = re_link.sub(r'`\1`_', new)        
         yield old, new
 
 
@@ -47,12 +51,12 @@ def get_filelist(filename):
 
 
 filenames = get_filelist(args.input)
-print filenames
+print(filenames)
 
 for filename in filenames:
     #Check if file exists
     if not os.path.exists(filename):
-        print "Error: File %s not found." % filename
+        print("Error: File %s not found." % filename)
         continue
 
     #Open file and read
@@ -76,12 +80,12 @@ for filename in filenames:
     #Print results to screen
     result = "%s: %i substitutions" % (filename, count)
     if args.verbose:
-        print "-" * len(result)
-    print result
+        print("-" * len(result))
+    print(result)
     if args.verbose:
-        print "-" * len(result)
+        print("-" * len(result))
         for msg in messages:
-            print msg
+            print(msg)
 
     if args.output:
         f.close()
