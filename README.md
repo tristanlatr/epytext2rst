@@ -1,4 +1,7 @@
 # epytext2rst
+
+This is an updated version of: https://pypi.org/project/epytext2rst/
+
 eyptext2rst is a command line tool to convert epytext markup language in RestructuredText.
 
 Be careful when running this on code, it can do unwanted substitutions, always double check before committing. 
