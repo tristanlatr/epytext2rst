@@ -19,7 +19,12 @@ parser.add_argument("-o", "--output-dir", dest="output",
 args = parser.parse_args()   
 
 #define regex
-re_field = re.compile('@(param|type|rtype|return|ivar)')
+all_fields = [
+    'param', 'keyword', 'type', 'rtype', 'returntype', 'return', 'returns', 
+    'yield', 'yields', 'warn', 'warns', 'cvar', 'ivar', 'var', 'node', 
+    'see', 'since', 'author', 'raise', 'raises', 
+]
+re_field = re.compile(f'@({"|".join(all_fields)})')
 re_italics = re.compile('I\{(.*?)\}')
 re_bold = re.compile('B\{(.*?)\}')
 re_code = re.compile('C\{(.*?)\}')

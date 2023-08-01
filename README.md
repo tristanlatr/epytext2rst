@@ -37,7 +37,7 @@ python epytext2rst.py mydirectory -v
 
 Keywords
 ```
-@(param|type|rtype|return|ivar) --> :(param|type|rtype|return|ivar)
+@(param|type|rtype|return|ivar and more) --> :(param|type|rtype|return|ivar)
 ```
 Italics
 ```
